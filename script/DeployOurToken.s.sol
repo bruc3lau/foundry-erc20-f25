@@ -8,11 +8,10 @@ import "../src/OurToken.sol";
 contract DeployOurToken is Script {
     uint256 initialSupply = 1000 ether; // Adjust the initial supply as needed
 
-    function run() external {
+    function run() external returns (OurToken) {
         vm.startBroadcast();
-
-        new OurToken(initialSupply);
-
+        OurToken ourToken = new OurToken(initialSupply);
         vm.stopBroadcast();
+        return ourToken;
     }
 }
